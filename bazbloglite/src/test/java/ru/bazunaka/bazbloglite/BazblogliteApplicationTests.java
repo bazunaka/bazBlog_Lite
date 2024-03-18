@@ -1,13 +1,13 @@
-package ru.bazunaka.bazblog;
+package ru.bazunaka.bazbloglite;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class BazblogApplicationTests {
+class BazblogliteApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+    @Test
+    void contextLoads() {
+    }
 
 }
