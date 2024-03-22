@@ -17,10 +17,10 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
 
-    @Column(name = "user_ID")
+    @Column(name = "user_ID", nullable = false)
     private Long userID;
-    @Column(name = "user_name", nullable = false, unique = true)
-    private String userName;
-    @Column(name = "biography")
-    private String bio;
+    @Column(name = "text_post", nullable = false)
+    private String textPost;
+    @Column(name = "count_likes")
+    private Integer likes;
 }
