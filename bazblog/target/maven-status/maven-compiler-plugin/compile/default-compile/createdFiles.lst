@@ -1,0 +1,5 @@
+ru/bazblog/bazdiary/BazblogApplication.class
+ru/bazblog/bazdiary/repository/PostRepository.class
+ru/bazblog/bazdiary/repository/UserRepository.class
+ru/bazblog/bazdiary/entity/Post.class
+ru/bazblog/bazdiary/entity/User.class
