@@ -1,0 +1,11 @@
+version: '3.5'
+
+services:
+  db_bazblog:
+    container_name: db_bazblog
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_USER=root
+    image: postgres:16.2-alpine3.19
