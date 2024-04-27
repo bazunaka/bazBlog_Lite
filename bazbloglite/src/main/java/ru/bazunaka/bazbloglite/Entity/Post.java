@@ -11,7 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "posts")
+@Table(name = "bazblog_posts")
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,4 +23,36 @@ public class Post {
     private String textPost;
     @Column(name = "count_likes")
     private Integer likes;
+
+    public Long getId() {
+        return Id;
+    }
+
+    public void setId(Long id) {
+        Id = id;
+    }
+
+    public Long getUserID() {
+        return userID;
+    }
+
+    public void setUserID(Long userID) {
+        this.userID = userID;
+    }
+
+    public String getTextPost() {
+        return textPost;
+    }
+
+    public void setTextPost(String textPost) {
+        this.textPost = textPost;
+    }
+
+    public Integer getLikes() {
+        return likes;
+    }
+
+    public void setLikes(Integer likes) {
+        this.likes = likes;
+    }
 }
