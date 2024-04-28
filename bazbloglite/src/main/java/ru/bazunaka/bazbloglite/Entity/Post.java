@@ -14,7 +14,7 @@ import lombok.Setter;
 @Table(name = "bazblog_posts")
 public class Post {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long Id;
 
     @Column(name = "user_ID")
@@ -63,5 +63,14 @@ public class Post {
 
     public void setLikes(Integer likes) {
         this.likes = likes;
+    }
+
+//    public Post() {
+//
+//    }
+
+    public Post(String titlePost, String textPost) {
+        this.titlePost = titlePost;
+        this.textPost = textPost;
     }
 }
