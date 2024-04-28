@@ -17,13 +17,22 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
 
-    @Column(name = "user_ID", nullable = false)
+    @Column(name = "user_ID")
     private Long userID;
+    @Column(name = "title")
+    private String titlePost;
     @Column(name = "text_post", nullable = false)
     private String textPost;
     @Column(name = "count_likes")
     private Integer likes;
 
+    public String getTitlePost() {
+        return titlePost;
+    }
+
+    public void setTitlePost(String titlePost) {
+        this.titlePost = titlePost;
+    }
     public Long getId() {
         return Id;
     }
