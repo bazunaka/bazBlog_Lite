@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import ru.bazunaka.bazbloglite.Entity.Post;
 import ru.bazunaka.bazbloglite.Repository.PostRepository;
 
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -27,6 +28,14 @@ public class MainController {
         postRepository.save(post);
 
         Iterable<Post> posts = postRepository.findAll();
+        model.put("posts", posts);
+        return "home";
+    }
+
+    @PostMapping("filter")
+    public String filter(@RequestParam String filter, Map<String, Object> model) {
+        List<Post> posts = postRepository.findByTitlePost(filter);
+
         model.put("posts", posts);
         return "home";
     }
