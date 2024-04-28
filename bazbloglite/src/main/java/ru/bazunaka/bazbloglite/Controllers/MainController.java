@@ -16,13 +16,18 @@ public class MainController {
     private PostRepository postRepository;
 
     @GetMapping("/")
+    public String greeting(Map<String, Object> model) {
+        return "main";
+    }
+
+    @GetMapping("/home")
     public String main(Map<String, Object> model) {
         Iterable<Post> posts = postRepository.findAll();
         model.put("posts", posts);
         return "home";
     }
 
-    @PostMapping
+    @PostMapping("/home")
     public String add_post(@RequestParam String title, @RequestParam String text, Map<String, Object> model) {
         Post post = new Post(title, text);
         postRepository.save(post);

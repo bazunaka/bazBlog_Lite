@@ -65,9 +65,15 @@ public class Post {
         this.likes = likes;
     }
 
-//    public Post() {
-//
+//    public User getAuthor() {
+//        return author;
 //    }
+//
+//    public void setAuthor(User author) {
+//        this.author = author;
+//    }
+//
+//    private Group author;
 
     public Post(String titlePost, String textPost) {
         this.titlePost = titlePost;

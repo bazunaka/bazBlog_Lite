@@ -15,7 +15,7 @@ import lombok.Setter;
 @Table(name = "bazblog_users")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long Id;
 
     @Column(name = "full_name")
