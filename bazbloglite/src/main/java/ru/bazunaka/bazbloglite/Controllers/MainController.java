@@ -34,7 +34,12 @@ public class MainController {
 
     @PostMapping("filter")
     public String filter(@RequestParam String filter, Map<String, Object> model) {
-        List<Post> posts = postRepository.findByTitlePost(filter);
+        Iterable<Post> posts;
+        if (filter != null && !filter.isEmpty()) {
+            posts = postRepository.findByTitlePost(filter);
+        } else {
+            posts = postRepository.findAll();
+        }
 
         model.put("posts", posts);
         return "home";
