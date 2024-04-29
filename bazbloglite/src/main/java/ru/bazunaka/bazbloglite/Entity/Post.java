@@ -14,7 +14,7 @@ import lombok.Setter;
 @Table(name = "bazblog_posts")
 public class Post {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
 
     @Column(name = "user_ID")
