@@ -5,15 +5,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.bazunaka.bazbloglite.Entity.Post;
+import ru.bazunaka.bazbloglite.Entity.User;
 import ru.bazunaka.bazbloglite.Repository.PostRepository;
+import ru.bazunaka.bazbloglite.Repository.UserRepository;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @Controller
 public class MainController {
     @Autowired
     private PostRepository postRepository;
+    private UserRepository userRepository;
 
     @GetMapping("/")
     public String greeting(Map<String, Object> model) {
