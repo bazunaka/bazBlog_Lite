@@ -2,6 +2,8 @@ package ru.bazunaka.bazbloglite.Entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import java.util.Set;
 
@@ -16,7 +18,10 @@ public class User {
     @Column(unique = true)
     private String userName;
     private String password;
-    private String roles;
+
+    @ManyToMany
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private Set<Role> roles;
 
     public User() {
 
@@ -25,6 +30,9 @@ public class User {
     public User(String userName, String password) {
         this.userName = userName;
         this.password = password;
-        this.roles = "USER";
     }
+
+    public Set<Role> getRoles() { return roles; }
+
+    public void setRoles(Set<Role> roles) { this.roles = roles; }
 }
