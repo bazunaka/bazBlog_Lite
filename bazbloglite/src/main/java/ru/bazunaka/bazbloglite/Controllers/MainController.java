@@ -91,9 +91,9 @@ public class MainController {
     public String login() {
         return "login";
     }
-    @GetMapping("/admin")
+    @GetMapping("/registration")
     public String admin() {
-        return "admin";
+        return "registration";
     }
     @GetMapping("/manager")
     public String manager() {
