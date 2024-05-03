@@ -1,8 +1,5 @@
 package ru.bazunaka.bazbloglite.Mapper;
 
-import ru.bazunaka.bazbloglite.Dto.UserDto;
-import ru.bazunaka.bazbloglite.Entity.User;
-
 public class UserMapper {
 
 //    public static UserDto mapToUserDto(User user){

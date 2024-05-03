@@ -82,8 +82,7 @@ package ru.bazunaka.bazbloglite.Controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import ru.bazunaka.bazbloglite.Entity.Role;
+import org.springframework.web.bind.annotation.RequestBody;
 import ru.bazunaka.bazbloglite.Entity.User;
 import ru.bazunaka.bazbloglite.Repository.UserRepository;
 
@@ -105,15 +104,10 @@ public class MainController {
     @GetMapping("/registration")
     public String registration() { return "registration"; }
     @PostMapping("/registration")
-    public String addUser(User user, Map<String, Object> model) {
-        User userFromDb = userRepository.findByUsername(user.getUsername());
-
-        if (userFromDb != null) {
-            model.put("message", "User exists!");
-            return "registration";
-        }
-        user.setActive(true);
-        user.setRoles(Collections.singleton(Role.ADMIN));
+    public String addUser(@RequestBody User user) {
+        user.setUsername("admin");
+        user.setPassword("admin");
+        user.setRoles("ADMIN");
         userRepository.save(user);
 
         return "redirect:/login";
