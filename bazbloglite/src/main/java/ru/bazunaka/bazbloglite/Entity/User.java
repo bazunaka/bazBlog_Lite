@@ -32,7 +32,6 @@ public class User implements UserDetails {
             inverseJoinColumns = {
                     @JoinColumn(name = "user_role_id", referencedColumnName = "id")
             })
-
     private Set<Role> authorities = new HashSet<>();
 
     @Override
