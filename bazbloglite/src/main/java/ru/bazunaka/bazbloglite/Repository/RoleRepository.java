@@ -1,8 +1,8 @@
 //package ru.bazunaka.bazbloglite.Repository;
 //
 //import org.springframework.data.jpa.repository.JpaRepository;
-//import ru.bazunaka.bazbloglite.Entity.User;
+//import ru.bazunaka.bazbloglite.Entity.Role;
 //
-//public class UserRepository extends JpaRepository<User, Long> {
+//public class RoleRepository extends JpaRepository<Role, Long> {
 //
 //}
