@@ -16,7 +16,7 @@ import java.util.Set;
 
 @Slf4j
 @RestController
-@RequestMapping("/api/v1/accounts/register")
+@RequestMapping("/api/v1/accounts")
 public class UserController {
 
     private final UserService userService;
