@@ -33,9 +33,7 @@ public class UserController {
     @ResponseStatus(HttpStatus.CREATED)
     public void registerUser(@RequestBody RegisterRequest registerRequest) {
         log.info("Register request: {}", registerRequest);
-
-        Assert.hasLength(registerRequest.username(), "Username must be not null!");
-        Assert.hasLength(registerRequest.password(), "Password must be not null!");
+        
         Role role = this.roleService
                 .findUserRole()
                 .orElseThrow(() -> new RuntimeException("Role not found"));
