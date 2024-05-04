@@ -12,6 +12,7 @@ import ru.bazunaka.bazbloglite.Mapper.RegisterRequestToUserMapper;
 import ru.bazunaka.bazbloglite.Model.RegisterRequest;
 import ru.bazunaka.bazbloglite.Services.RoleService;
 import ru.bazunaka.bazbloglite.Services.UserService;
+import ru.bazunaka.bazbloglite.Usercase.RegisterUserAccountCase;
 
 import java.util.Locale;
 import java.util.Set;
@@ -21,12 +22,10 @@ import java.util.Set;
 @RequestMapping("/api/v1/accounts")
 public class UserController {
 
-    private final UserService userService;
-    private final RegisterRequestToUserMapper mapper;
+    private final RegisterUserAccountCase registerUserAccountCase;
 
-    public UserController(UserService userService, RegisterRequestToUserMapper mapper) {
-        this.userService = userService;
-        this.mapper = mapper;
+    public UserController(RegisterUserAccountCase registerUserAccountCase) {
+        this.registerUserAccountCase = registerUserAccountCase;
     }
 
     @PostMapping("/register")
@@ -34,7 +33,6 @@ public class UserController {
     public void registerUser(@Valid @RequestBody RegisterRequest registerRequest) {
         log.info("Register request: {}", registerRequest);
 
-        User user = this.mapper.map(registerRequest);
-        this.userService.createUserAccount(user);
+        this.registerUserAccountCase.register(registerRequest);
     }
 }
