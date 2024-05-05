@@ -1,9 +1,12 @@
 package ru.bazunaka.bazbloglite.Services.impl;
 
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import ru.bazunaka.bazbloglite.Entity.User;
 import ru.bazunaka.bazbloglite.Repository.UserRepository;
 import ru.bazunaka.bazbloglite.Services.UserService;
+
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -22,5 +25,10 @@ public class UserServiceImpl implements UserService {
             throw new RuntimeException("Account already exists");
         }
         this.userRepository.save(user);
+    }
+
+    @Override
+    public Optional<UserDetails> findUserByUsername(String username) {
+        return this.userRepository.findByUsername(username);
     }
 }
