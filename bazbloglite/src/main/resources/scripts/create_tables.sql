@@ -46,7 +46,7 @@ create table public.bazblog_user_profiles
 
 alter table public.bazblog_user_profiles
     add constraint user_profiles__user_accounts_fk
-        foreign key (id) references public.bazblog_user_accounts (id);
+        foreign key (id) references public.bazblog_users (id);
 
 alter table public.bazblog_user_profiles
     add constraint user_profiles_nickname__unique
