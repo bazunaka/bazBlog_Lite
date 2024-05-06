@@ -16,7 +16,7 @@ public class UserProfileController {
         this.registerCase = registerCase;
     }
 
-    @PostMapping()
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void registerUserProfile(@Valid @RequestBody UserProfileRegisterRequest registerRequest) {
         this.registerCase.registerUserProfile(registerRequest);
