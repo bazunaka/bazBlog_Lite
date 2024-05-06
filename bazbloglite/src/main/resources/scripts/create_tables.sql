@@ -26,11 +26,11 @@ alter table public.bazblog_user_accounts_roles
 
 alter table public.bazblog_user_accounts_roles
     add constraint user_accounts_roles__user_accounts_fk
-        foreign key (user_account_id) references public.bazblog_user_accounts (id);
+        foreign key (user_id) references public.bazblog_users (id);
 
 alter table public.bazblog_user_accounts_roles
     add constraint user_accounts_roles_unique
-        unique (user_account_id, user_role_id);
+        unique (user_id, user_role_id);
 
 insert into public.bazblog_user_roles(authority)
 values ('ROLE_USER'),
