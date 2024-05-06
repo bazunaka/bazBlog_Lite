@@ -1,4 +1,4 @@
-package ru.bazunaka.bazbloglite.Usercase;
+package ru.bazunaka.bazbloglite.Usecase;
 
 import ru.bazunaka.bazbloglite.Model.RegisterRequest;
 

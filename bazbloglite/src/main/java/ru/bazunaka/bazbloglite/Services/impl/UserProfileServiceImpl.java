@@ -22,6 +22,14 @@ public class UserProfileServiceImpl implements UserProfileService {
                     userProfile.getId());
             throw new RuntimeException(errorMessage);
         }
+
+        if(this.userProfileRepository.existsByNickname(userProfile.getNickname())) {
+            String errorMessage = String.format(
+                    "Профиль пользователя с данным Nickname = %s уже был создан",
+                    userProfile.getNickname());
+            throw new RuntimeException(errorMessage);
+        }
+
         this.userProfileRepository.save(userProfile);
     }
 }

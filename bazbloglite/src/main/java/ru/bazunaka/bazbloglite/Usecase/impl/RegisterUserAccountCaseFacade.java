@@ -1,11 +1,11 @@
-package ru.bazunaka.bazbloglite.Usercase.impl;
+package ru.bazunaka.bazbloglite.Usecase.impl;
 
 import org.springframework.stereotype.Component;
 import ru.bazunaka.bazbloglite.Entity.User;
 import ru.bazunaka.bazbloglite.Mapper.RegisterRequestToUserMapper;
 import ru.bazunaka.bazbloglite.Model.RegisterRequest;
 import ru.bazunaka.bazbloglite.Services.UserService;
-import ru.bazunaka.bazbloglite.Usercase.RegisterUserAccountCase;
+import ru.bazunaka.bazbloglite.Usecase.RegisterUserAccountCase;
 
 @Component
 public class RegisterUserAccountCaseFacade implements RegisterUserAccountCase {
