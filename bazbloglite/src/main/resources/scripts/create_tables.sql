@@ -63,3 +63,13 @@ create table public.bazblog_posts
 alter table public.bazblog_posts
     add constraint tweets__user_profiles_fk
         foreign key (user_profile_id) references public.bazblog_user_profiles (id);
+
+alter table public.bazblog_posts
+    add column modifiedTime timestamp;
+
+update public.bazblog_posts
+    set modifiedTime = createdTime
+    where bazblog_posts.modifiedTime is null;
+
+alter table public.bazblog_posts
+    alter column modifiedTime set not null;
