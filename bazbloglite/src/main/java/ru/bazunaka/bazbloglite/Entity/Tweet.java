@@ -11,7 +11,7 @@ import java.time.Instant;
 @Entity
 @Getter
 @Setter
-@Table(name = "posts")
+@Table(name = "bazblog_posts")
 @EntityListeners(AuditingEntityListener.class)
 public class Tweet {
 

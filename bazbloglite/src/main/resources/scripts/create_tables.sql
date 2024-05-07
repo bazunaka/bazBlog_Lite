@@ -50,4 +50,16 @@ alter table public.bazblog_user_profiles
 
 alter table public.bazblog_user_profiles
     add constraint user_profiles_nickname__unique
-        unique (nickname);
+        unique (nickname)
+
+create table public.bazblog_posts
+(
+    id serial primary key ,
+    message varchar(180) not null ,
+    user_profile_id integer not null ,
+    createdTime timestamp not null
+);
+
+alter table public.bazblog_posts
+    add constraint tweets__user_profiles_fk
+        foreign key (user_profile_id) references public.bazblog_user_profiles (id);
