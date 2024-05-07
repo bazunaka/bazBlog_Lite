@@ -33,10 +33,23 @@ public class TweetEditCaseFacade implements TweetEditCase {
     public TweetResponse editTweet(TweetEditRequest editRequest) {
         UserProfile actor = this.currentUserProfileService.currentUserProfile();
         UserProfile owner = this.tweetService.findTweetById(editRequest.id())
+                .map(Tweet::getUserProfile)
                 .orElseThrow(() -> {
                     String errorMessage = String.format("Пост с id = %d не существует", editRequest.id());
                     return new RuntimeException(errorMessage);
-                }).getUserProfile();
-        return null;
+                });
+
+        if (!actor.equals(owner)) {
+            String errorMessage = String
+                    .format("Редактирование поста с id = %d запрещено. Пользователь %s не является его владельцем",
+                            editRequest.id(),
+                            actor.getNickname());
+            throw new RuntimeException(errorMessage);
+        }
+
+        Tweet tweet = this.tweetEditRequestToTweetMapper.map(editRequest);
+        Tweet updatedTweet = this.tweetService.updateTweet(tweet);
+
+        return this.tweetToTweetResponseMapper.map(updatedTweet);
     }
 }

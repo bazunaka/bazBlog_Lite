@@ -5,6 +5,8 @@ import ru.bazunaka.bazbloglite.Entity.Tweet;
 import ru.bazunaka.bazbloglite.Repository.TweetRepository;
 import ru.bazunaka.bazbloglite.Services.TweetService;
 
+import java.util.Optional;
+
 @Service
 public class TweetServiceImpl implements TweetService {
 
@@ -17,5 +19,13 @@ public class TweetServiceImpl implements TweetService {
     @Override
     public Tweet createTweet(Tweet tweet) {
         return this.tweetRepository.save(tweet);
+    }
+
+    @Override
+    public Tweet updateTweet(Tweet tweet) { return this.tweetRepository.save(tweet); }
+
+    @Override
+    public Optional<Tweet> findTweetById(long tweetId) {
+        return this.tweetRepository.findById(tweetId);
     }
 }
