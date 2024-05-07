@@ -5,6 +5,8 @@ import ru.bazunaka.bazbloglite.Entity.UserProfile;
 import ru.bazunaka.bazbloglite.Repository.UserProfileRepository;
 import ru.bazunaka.bazbloglite.Services.UserProfileService;
 
+import java.util.Optional;
+
 @Service
 public class UserProfileServiceImpl implements UserProfileService {
 
@@ -31,5 +33,10 @@ public class UserProfileServiceImpl implements UserProfileService {
         }
 
         this.userProfileRepository.save(userProfile);
+    }
+
+    @Override
+    public Optional<UserProfile> findUserProfileById(long userProfileId) {
+        return this.userProfileRepository.findById(userProfileId);
     }
 }

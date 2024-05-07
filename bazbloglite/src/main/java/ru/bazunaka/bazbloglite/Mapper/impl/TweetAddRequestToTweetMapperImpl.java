@@ -20,7 +20,6 @@ public class TweetAddRequestToTweetMapperImpl implements TweetAddRequestToTweetM
 
         Tweet tweet = new Tweet();
         tweet.setUserProfile(this.currentUserProfileService.currentUserProfile());
-        tweet.setCreatedTime();
         tweet.setMessage(addRequest.message());
 
         return tweet;

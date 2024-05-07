@@ -22,13 +22,12 @@ public class CurrentUserProfileServiceImpl implements CurrentUserProfileService 
     public UserProfile currentUserProfile() {
         CurrentUserModel currentUserModel = this.identityService.currentUserAccount()
                 .orElseThrow(() -> new RuntimeException("Пользователь должен быть авторизован"));
-        this.userProfileService
+        return this.userProfileService
                 .findUserProfileById(currentUserModel.userAccountId())
                 .orElseThrow(() -> {
                     String errorMessage = String.format("Профиль пользователя с id = %d не существует",
                             currentUserModel.userAccountId());
                     return new RuntimeException(errorMessage);
                 });
-        return null;
     }
 }

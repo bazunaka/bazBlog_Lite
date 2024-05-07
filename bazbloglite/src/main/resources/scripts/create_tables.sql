@@ -50,7 +50,7 @@ alter table public.bazblog_user_profiles
 
 alter table public.bazblog_user_profiles
     add constraint user_profiles_nickname__unique
-        unique (nickname)
+        unique (nickname);
 
 create table public.bazblog_posts
 (
