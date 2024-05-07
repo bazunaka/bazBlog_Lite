@@ -7,18 +7,18 @@ import ru.bazunaka.bazbloglite.Mapper.TweetToTweetResponseMapper;
 import ru.bazunaka.bazbloglite.Model.TweetAddRequest;
 import ru.bazunaka.bazbloglite.Model.TweetResponse;
 import ru.bazunaka.bazbloglite.Services.TweetService;
-import ru.bazunaka.bazbloglite.Usecase.TweetAddUsecase;
+import ru.bazunaka.bazbloglite.Usecase.TweetAddCase;
 
 @Component
-public class TweetAddUsecaseFacade implements TweetAddUsecase {
+public class TweetAddCaseFacade implements TweetAddCase {
 
     private final TweetAddRequestToTweetMapper tweetAddRequestToTweetMapper;
     private final TweetToTweetResponseMapper tweetToTweetResponseMapper;
     private final TweetService tweetService;
 
-    public TweetAddUsecaseFacade(TweetAddRequestToTweetMapper tweetAddRequestToTweetMapper,
-                                 TweetToTweetResponseMapper tweetToTweetResponseMapper,
-                                 TweetService tweetService) {
+    public TweetAddCaseFacade(TweetAddRequestToTweetMapper tweetAddRequestToTweetMapper,
+                              TweetToTweetResponseMapper tweetToTweetResponseMapper,
+                              TweetService tweetService) {
         this.tweetAddRequestToTweetMapper = tweetAddRequestToTweetMapper;
         this.tweetToTweetResponseMapper = tweetToTweetResponseMapper;
         this.tweetService = tweetService;
