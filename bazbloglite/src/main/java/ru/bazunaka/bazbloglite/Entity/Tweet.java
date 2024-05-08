@@ -28,7 +28,7 @@ public class Tweet {
 
     @LastModifiedDate
     @Column(nullable = false)
-    private Instant modifedTime;
+    private Instant modifiedTime;
 
     @ManyToOne(optional = false)
     private UserProfile userProfile;
