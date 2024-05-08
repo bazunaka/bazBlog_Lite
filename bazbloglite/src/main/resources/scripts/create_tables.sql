@@ -68,7 +68,7 @@ alter table public.bazblog_posts
     add column modifiedTime timestamp;
 
 update public.bazblog_posts
-    set modifiedTime = createdTime
+    set modifiedTime = created_time
     where bazblog_posts.modifiedTime is null;
 
 alter table public.bazblog_posts
