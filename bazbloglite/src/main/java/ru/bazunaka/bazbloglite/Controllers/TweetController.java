@@ -7,6 +7,7 @@ import ru.bazunaka.bazbloglite.Model.TweetAddRequest;
 import ru.bazunaka.bazbloglite.Model.TweetEditRequest;
 import ru.bazunaka.bazbloglite.Model.TweetResponse;
 import ru.bazunaka.bazbloglite.Usecase.TweetAddCase;
+import ru.bazunaka.bazbloglite.Usecase.TweetDeleteCase;
 import ru.bazunaka.bazbloglite.Usecase.TweetEditCase;
 
 @RestController
@@ -15,10 +16,12 @@ public class TweetController {
 
     private final TweetAddCase tweetAddCase;
     private final TweetEditCase tweetEditCase;
+    private final TweetDeleteCase tweetDeleteCase;
 
-    public TweetController(TweetAddCase tweetAddCase, TweetEditCase tweetEditCase) {
+    public TweetController(TweetAddCase tweetAddCase, TweetEditCase tweetEditCase, TweetDeleteCase tweetDeleteCase) {
         this.tweetAddCase = tweetAddCase;
         this.tweetEditCase = tweetEditCase;
+        this.tweetDeleteCase = tweetDeleteCase;
     }
 
     @PostMapping
@@ -30,5 +33,10 @@ public class TweetController {
     @PutMapping
     public TweetResponse editTweet(@Valid  @RequestBody TweetEditRequest editRequest) {
         return this.tweetEditCase.editTweet(editRequest);
+    }
+
+    @DeleteMapping("/{tweetId}")
+    public void deleteTweet(@PathVariable long tweetId) {
+        this.tweetDeleteCase.deleteTweet(tweetId);
     }
 }
