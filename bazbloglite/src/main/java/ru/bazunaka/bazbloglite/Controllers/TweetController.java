@@ -1,10 +1,13 @@
 package ru.bazunaka.bazbloglite.Controllers;
 
 import jakarta.validation.Valid;
+import jakarta.websocket.server.PathParam;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import ru.bazunaka.bazbloglite.Model.TweetAddRequest;
 import ru.bazunaka.bazbloglite.Model.TweetEditRequest;
+import ru.bazunaka.bazbloglite.Model.TweetFindRequest;
 import ru.bazunaka.bazbloglite.Model.TweetResponse;
 import ru.bazunaka.bazbloglite.Usecase.TweetAddCase;
 import ru.bazunaka.bazbloglite.Usecase.TweetDeleteCase;
@@ -23,9 +26,9 @@ public class TweetController {
     private final TweetFindCase tweetFindCase;
 
     public TweetController(TweetAddCase tweetAddCase,
-                           TweetEditCase tweetEditCase,
-                           TweetDeleteCase tweetDeleteCase,
-                           TweetFindCase tweetFindCase) {
+            TweetEditCase tweetEditCase,
+            TweetDeleteCase tweetDeleteCase,
+            TweetFindCase tweetFindCase) {
         this.tweetAddCase = tweetAddCase;
         this.tweetEditCase = tweetEditCase;
         this.tweetDeleteCase = tweetDeleteCase;
@@ -34,12 +37,12 @@ public class TweetController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public TweetResponse addTweet(@Valid  @RequestBody TweetAddRequest addRequest) {
+    public TweetResponse addTweet(@Valid @RequestBody TweetAddRequest addRequest) {
         return this.tweetAddCase.addTweet(addRequest);
     }
 
     @PutMapping
-    public TweetResponse editTweet(@Valid  @RequestBody TweetEditRequest editRequest) {
+    public TweetResponse editTweet(@Valid @RequestBody TweetEditRequest editRequest) {
         return this.tweetEditCase.editTweet(editRequest);
     }
 
@@ -49,7 +52,8 @@ public class TweetController {
     }
 
     @GetMapping
-    public Collection<TweetResponse> findOwnerTweets() {
-        return this.tweetFindCase.findTweets();
+    public Collection<TweetResponse> findOwnerTweets(@PathParam("page") int page, @PathParam("limit") int limit) {
+        TweetFindRequest findRequest = new TweetFindRequest(page, limit);
+        return this.tweetFindCase.findTweets(findRequest);
     }
 }
