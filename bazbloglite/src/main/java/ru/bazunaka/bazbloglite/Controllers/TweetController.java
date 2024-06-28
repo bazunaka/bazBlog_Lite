@@ -9,6 +9,9 @@ import ru.bazunaka.bazbloglite.Model.TweetResponse;
 import ru.bazunaka.bazbloglite.Usecase.TweetAddCase;
 import ru.bazunaka.bazbloglite.Usecase.TweetDeleteCase;
 import ru.bazunaka.bazbloglite.Usecase.TweetEditCase;
+import ru.bazunaka.bazbloglite.Usecase.TweetFindCase;
+
+import java.util.Collection;
 
 @RestController
 @RequestMapping("/api/v1/tweets")
@@ -17,11 +20,16 @@ public class TweetController {
     private final TweetAddCase tweetAddCase;
     private final TweetEditCase tweetEditCase;
     private final TweetDeleteCase tweetDeleteCase;
+    private final TweetFindCase tweetFindCase;
 
-    public TweetController(TweetAddCase tweetAddCase, TweetEditCase tweetEditCase, TweetDeleteCase tweetDeleteCase) {
+    public TweetController(TweetAddCase tweetAddCase,
+                           TweetEditCase tweetEditCase,
+                           TweetDeleteCase tweetDeleteCase,
+                           TweetFindCase tweetFindCase) {
         this.tweetAddCase = tweetAddCase;
         this.tweetEditCase = tweetEditCase;
         this.tweetDeleteCase = tweetDeleteCase;
+        this.tweetFindCase = tweetFindCase;
     }
 
     @PostMapping
@@ -38,5 +46,10 @@ public class TweetController {
     @DeleteMapping("/{tweetId}")
     public void deleteTweet(@PathVariable long tweetId) {
         this.tweetDeleteCase.deleteTweet(tweetId);
+    }
+
+    @GetMapping
+    public Collection<TweetResponse> findOwnerTweets() {
+        return this.tweetFindCase.findTweets();
     }
 }

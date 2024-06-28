@@ -1,5 +1,6 @@
 package ru.bazunaka.bazbloglite.Usecase.impl;
 
+import org.springframework.stereotype.Component;
 import ru.bazunaka.bazbloglite.Entity.Tweet;
 import ru.bazunaka.bazbloglite.Entity.UserProfile;
 import ru.bazunaka.bazbloglite.Mapper.TweetToTweetResponseMapper;
@@ -10,6 +11,7 @@ import ru.bazunaka.bazbloglite.Usecase.TweetFindCase;
 
 import java.util.Collection;
 
+@Component
 public class TweetFindCaseFacade implements TweetFindCase {
 
     private final CurrentUserProfileService currentUserProfileService;
