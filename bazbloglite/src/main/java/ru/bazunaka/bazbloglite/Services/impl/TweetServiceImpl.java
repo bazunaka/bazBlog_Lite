@@ -2,9 +2,11 @@ package ru.bazunaka.bazbloglite.Services.impl;
 
 import org.springframework.stereotype.Service;
 import ru.bazunaka.bazbloglite.Entity.Tweet;
+import ru.bazunaka.bazbloglite.Entity.UserProfile;
 import ru.bazunaka.bazbloglite.Repository.TweetRepository;
 import ru.bazunaka.bazbloglite.Services.TweetService;
 
+import java.util.Collection;
 import java.util.Optional;
 
 @Service
@@ -32,5 +34,10 @@ public class TweetServiceImpl implements TweetService {
     @Override
     public void deleteTweet(long tweetId) {
         this.tweetRepository.deleteById(tweetId);
+    }
+
+    @Override
+    public Collection<Tweet> findAllTweets(UserProfile owner) {
+        return this.tweetRepository.findAllByUserProfile(owner);
     }
 }
