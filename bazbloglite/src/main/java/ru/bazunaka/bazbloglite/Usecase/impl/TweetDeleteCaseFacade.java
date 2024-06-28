@@ -40,5 +40,6 @@ public class TweetDeleteCaseFacade implements TweetDeleteCase {
                             actor.getNickname());
             throw new RuntimeException(errorMessage);
         }
+        this.tweetService.deleteTweet(tweetId);
     }
 }
