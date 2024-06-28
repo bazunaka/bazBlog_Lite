@@ -1,5 +1,7 @@
 package ru.bazunaka.bazbloglite.Services.impl;
 
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import ru.bazunaka.bazbloglite.Entity.Tweet;
 import ru.bazunaka.bazbloglite.Entity.UserProfile;
@@ -24,7 +26,9 @@ public class TweetServiceImpl implements TweetService {
     }
 
     @Override
-    public Tweet updateTweet(Tweet tweet) { return this.tweetRepository.save(tweet); }
+    public Tweet updateTweet(Tweet tweet) {
+        return this.tweetRepository.save(tweet);
+    }
 
     @Override
     public Optional<Tweet> findTweetById(long tweetId) {
@@ -37,7 +41,7 @@ public class TweetServiceImpl implements TweetService {
     }
 
     @Override
-    public Collection<Tweet> findAllTweets(UserProfile owner) {
-        return this.tweetRepository.findAllByUserProfile(owner);
+    public Collection<Tweet> findAllTweets(UserProfile owner, PageRequest pageable) {
+        return this.tweetRepository.findAllByUserProfile(owner, pageable);
     }
 }
