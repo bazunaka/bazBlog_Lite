@@ -15,6 +15,8 @@ import ru.bazunaka.bazbloglite.Usecase.TweetFindCase;
 
 import java.util.Collection;
 
+import static ru.bazunaka.bazbloglite.Entity.Tweet_.CREATED_TIME;
+
 @Component
 public class TweetFindCaseFacade implements TweetFindCase {
 
@@ -34,7 +36,7 @@ public class TweetFindCaseFacade implements TweetFindCase {
     public Collection<TweetResponse> findTweets(TweetFindRequest findRequest) {
         UserProfile owner = this.currentUserProfileService.currentUserProfile();
 
-        Sort sort = Sort.by(Sort.Direction.DESC, "createdTime");
+        Sort sort = Sort.by(Sort.Direction.DESC, CREATED_TIME);
 
         PageRequest pageable = PageRequest.of(findRequest.page(), findRequest.limit(), sort);
 
