@@ -20,14 +20,18 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class WebSecurityConfig {
     /**
-     * WebSecurityConfig - это конфигурационный класс, помеченный аннотациями @Configuration и @EnableWebSecurity,
-     * который определяет настройки безопасности для веб-приложения.
+     * Создает цепочку фильтров безопасности для HTTP-запросов.
+     *
+     * @param http объект HttpSecurity для настройки правил безопасности
+     * @return цепочка фильтров безопасности
+     * @throws Exception если возникла ошибка при настройке
      */
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        /*
-          Это метод, помеченный аннотацией @Bean, который создает цепочку фильтров безопасности.
-          Он определяет правила доступа к различным URL-адресам в приложении.
+        /**
+         * Создает экземпляр PasswordEncoder для хеширования паролей пользователей.
+         *
+         * @return экземпляр PasswordEncoder
          */
         /*
          * authorizeHttpRequests - определяет правила авторизации для различных URL-адресов.
