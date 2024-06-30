@@ -16,6 +16,10 @@ import ru.bazunaka.bazbloglite.Usecase.TweetFindCase;
 
 import java.util.Collection;
 
+/**
+ * Контроллер для управления твитами.
+ * Обрабатывает HTTP-запросы, связанные с добавлением, редактированием, удалением и поиском твитов.
+ */
 @RestController
 @RequestMapping("/api/v1/tweets")
 public class TweetController {
@@ -25,6 +29,14 @@ public class TweetController {
     private final TweetDeleteCase tweetDeleteCase;
     private final TweetFindCase tweetFindCase;
 
+    /**
+     * Конструктор контроллера твитов.
+     *
+     * @param tweetAddCase    компонент для добавления твитов
+     * @param tweetEditCase   компонент для редактирования твитов
+     * @param tweetDeleteCase компонент для удаления твитов
+     * @param tweetFindCase   компонент для поиска твитов
+     */
     public TweetController(TweetAddCase tweetAddCase,
             TweetEditCase tweetEditCase,
             TweetDeleteCase tweetDeleteCase,
@@ -35,22 +47,46 @@ public class TweetController {
         this.tweetFindCase = tweetFindCase;
     }
 
+    /**
+     * Обрабатывает POST-запрос для добавления нового твита.
+     *
+     * @param addRequest запрос на добавление твита
+     * @return ответ с информацией о добавленном твите
+     */
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public TweetResponse addTweet(@Valid @RequestBody TweetAddRequest addRequest) {
         return this.tweetAddCase.addTweet(addRequest);
     }
 
+    /**
+     * Обрабатывает PUT-запрос для редактирования существующего твита.
+     *
+     * @param editRequest запрос на редактирование твита
+     * @return ответ с информацией о редактированном твите
+     */
     @PutMapping
     public TweetResponse editTweet(@Valid @RequestBody TweetEditRequest editRequest) {
         return this.tweetEditCase.editTweet(editRequest);
     }
 
+    /**
+     * Обрабатывает DELETE-запрос для удаления твита по его идентификатору.
+     *
+     * @param tweetId идентификатор твита для удаления
+     */
     @DeleteMapping("/{tweetId}")
     public void deleteTweet(@PathVariable long tweetId) {
         this.tweetDeleteCase.deleteTweet(tweetId);
     }
 
+    /**
+     * Обрабатывает GET-запрос для поиска твитов владельца.
+     *
+     * @param page  номер страницы результатов
+     * @param limit количество твитов на странице
+     * @return коллекция твитов владельца
+     */
     @GetMapping
     public Collection<TweetResponse> findOwnerTweets(@PathParam("page") int page, @PathParam("limit") int limit) {
         TweetFindRequest findRequest = new TweetFindRequest(page, limit);
