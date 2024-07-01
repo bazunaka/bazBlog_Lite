@@ -8,6 +8,7 @@ import ru.bazunaka.bazbloglite.Entity.Tweet;
 import ru.bazunaka.bazbloglite.Entity.UserProfile;
 import ru.bazunaka.bazbloglite.Mapper.TweetToTweetResponseMapper;
 import ru.bazunaka.bazbloglite.Model.TweetFindRequest;
+import ru.bazunaka.bazbloglite.Model.TweetPageResponse;
 import ru.bazunaka.bazbloglite.Model.TweetResponse;
 import ru.bazunaka.bazbloglite.Services.CurrentUserProfileService;
 import ru.bazunaka.bazbloglite.Services.TweetService;
@@ -33,7 +34,7 @@ public class TweetFindCaseFacade implements TweetFindCase {
     }
 
     @Override
-    public Collection<TweetResponse> findTweets(TweetFindRequest findRequest) {
+    public TweetPageResponse findTweets(TweetFindRequest findRequest) {
         UserProfile owner = this.currentUserProfileService.currentUserProfile();
 
         Sort sort = Sort.by(Sort.Direction.DESC, CREATED_TIME);
@@ -42,9 +43,11 @@ public class TweetFindCaseFacade implements TweetFindCase {
 
         Collection<Tweet> allOwnerTweets = this.tweetService.findAllTweets(owner, pageable);
 
-        return allOwnerTweets
+        Collection<TweetResponse> tweetResponses = allOwnerTweets
                 .stream()
                 .map(this.tweetToTweetResponseMapper::map)
                 .toList();
+
+        return new TweetPageResponse(tweetResponses);
     }
 }

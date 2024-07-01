@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import ru.bazunaka.bazbloglite.Model.TweetAddRequest;
 import ru.bazunaka.bazbloglite.Model.TweetEditRequest;
 import ru.bazunaka.bazbloglite.Model.TweetFindRequest;
+import ru.bazunaka.bazbloglite.Model.TweetPageResponse;
 import ru.bazunaka.bazbloglite.Model.TweetResponse;
 import ru.bazunaka.bazbloglite.Usecase.TweetAddCase;
 import ru.bazunaka.bazbloglite.Usecase.TweetDeleteCase;
@@ -18,7 +19,8 @@ import java.util.Collection;
 
 /**
  * Контроллер для управления твитами.
- * Обрабатывает HTTP-запросы, связанные с добавлением, редактированием, удалением и поиском твитов.
+ * Обрабатывает HTTP-запросы, связанные с добавлением, редактированием,
+ * удалением и поиском твитов.
  */
 @RestController
 @RequestMapping("/api/v1/tweets")
@@ -88,7 +90,7 @@ public class TweetController {
      * @return коллекция твитов владельца
      */
     @GetMapping
-    public Collection<TweetResponse> findOwnerTweets(@PathParam("page") int page, @PathParam("limit") int limit) {
+    public TweetPageResponse findOwnerTweets(@PathParam("page") int page, @PathParam("limit") int limit) {
         TweetFindRequest findRequest = new TweetFindRequest(page, limit);
         return this.tweetFindCase.findTweets(findRequest);
     }
