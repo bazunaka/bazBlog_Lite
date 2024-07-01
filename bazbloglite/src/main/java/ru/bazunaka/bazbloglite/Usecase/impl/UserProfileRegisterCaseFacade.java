@@ -3,9 +3,9 @@ package ru.bazunaka.bazbloglite.Usecase.impl;
 import org.springframework.stereotype.Component;
 import ru.bazunaka.bazbloglite.Entity.UserProfile;
 import ru.bazunaka.bazbloglite.Mapper.UserProfileRegisterRequestToUserProfileMapper;
+import ru.bazunaka.bazbloglite.Usecase.UserProfileRegisterCase;
 import ru.bazunaka.bazbloglite.Model.UserProfileRegisterRequest;
 import ru.bazunaka.bazbloglite.Services.UserProfileService;
-import ru.bazunaka.bazbloglite.Usecase.UserProfileRegisterCase;
 
 @Component
 public class UserProfileRegisterCaseFacade implements UserProfileRegisterCase {
