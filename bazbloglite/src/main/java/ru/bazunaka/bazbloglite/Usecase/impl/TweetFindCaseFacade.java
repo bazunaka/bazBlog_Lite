@@ -1,6 +1,7 @@
 package ru.bazunaka.bazbloglite.Usecase.impl;
 
 import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
@@ -41,7 +42,7 @@ public class TweetFindCaseFacade implements TweetFindCase {
 
         PageRequest pageable = PageRequest.of(findRequest.page(), findRequest.limit(), sort);
 
-        Collection<Tweet> allOwnerTweets = this.tweetService.findAllTweets(owner, pageable);
+        Page<Tweet> allOwnerTweets = this.tweetService.findAllTweets(owner, pageable);
 
         Collection<TweetResponse> tweetResponses = allOwnerTweets
                 .stream()

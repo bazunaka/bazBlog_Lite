@@ -3,10 +3,9 @@ package ru.bazunaka.bazbloglite.Services;
 import ru.bazunaka.bazbloglite.Entity.Tweet;
 import ru.bazunaka.bazbloglite.Entity.UserProfile;
 
-import java.util.Collection;
 import java.util.Optional;
 
-import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 
 public interface TweetService {
@@ -18,5 +17,5 @@ public interface TweetService {
 
     void deleteTweet(long tweetId);
 
-    Collection<Tweet> findAllTweets(UserProfile owner, PageRequest pageable);
+    Page<Tweet> findAllTweets(UserProfile owner, PageRequest pageable);
 }
