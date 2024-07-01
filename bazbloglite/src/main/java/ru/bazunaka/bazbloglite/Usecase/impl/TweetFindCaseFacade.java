@@ -49,6 +49,9 @@ public class TweetFindCaseFacade implements TweetFindCase {
                 .map(this.tweetToTweetResponseMapper::map)
                 .toList();
 
-        return new TweetPageResponse(tweetResponses);
+        return new TweetPageResponse(allOwnerTweets.getTotalElements(),
+                                     allOwnerTweets.isFirst(),
+                                     allOwnerTweets.isLast(),
+                                     tweetResponses);
     }
 }
