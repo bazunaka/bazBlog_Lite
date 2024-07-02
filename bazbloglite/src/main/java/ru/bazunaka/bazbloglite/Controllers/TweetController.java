@@ -15,8 +15,6 @@ import ru.bazunaka.bazbloglite.Usecase.TweetDeleteCase;
 import ru.bazunaka.bazbloglite.Usecase.TweetEditCase;
 import ru.bazunaka.bazbloglite.Usecase.TweetFindCase;
 
-import java.util.Collection;
-
 /**
  * Контроллер для управления твитами.
  * Обрабатывает HTTP-запросы, связанные с добавлением, редактированием,
