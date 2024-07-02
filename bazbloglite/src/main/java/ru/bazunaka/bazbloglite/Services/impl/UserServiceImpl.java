@@ -1,6 +1,5 @@
 package ru.bazunaka.bazbloglite.Services.impl;
 
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import ru.bazunaka.bazbloglite.Entity.User;
 import ru.bazunaka.bazbloglite.Repository.UserRepository;

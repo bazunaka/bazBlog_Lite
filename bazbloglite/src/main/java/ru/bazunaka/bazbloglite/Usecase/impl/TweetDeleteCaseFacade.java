@@ -3,8 +3,6 @@ package ru.bazunaka.bazbloglite.Usecase.impl;
 import org.springframework.stereotype.Component;
 import ru.bazunaka.bazbloglite.Entity.Tweet;
 import ru.bazunaka.bazbloglite.Entity.UserProfile;
-import ru.bazunaka.bazbloglite.Mapper.TweetEditRequestToTweetMapper;
-import ru.bazunaka.bazbloglite.Mapper.TweetToTweetResponseMapper;
 import ru.bazunaka.bazbloglite.Services.CurrentUserProfileService;
 import ru.bazunaka.bazbloglite.Services.TweetService;
 import ru.bazunaka.bazbloglite.Usecase.TweetDeleteCase;

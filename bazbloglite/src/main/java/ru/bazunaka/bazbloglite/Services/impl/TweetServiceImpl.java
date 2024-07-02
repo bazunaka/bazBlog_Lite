@@ -1,6 +1,5 @@
 package ru.bazunaka.bazbloglite.Services.impl;
 
-import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -9,7 +8,6 @@ import ru.bazunaka.bazbloglite.Entity.UserProfile;
 import ru.bazunaka.bazbloglite.Repository.TweetRepository;
 import ru.bazunaka.bazbloglite.Services.TweetService;
 
-import java.util.Collection;
 import java.util.Optional;
 
 @Service
