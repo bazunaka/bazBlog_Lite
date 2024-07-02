@@ -4,9 +4,9 @@ import ru.bazunaka.bazbloglite.Entity.Subscription;
 
 public interface SubscriptionService {
 
-    void subscribe(Subscription subscription);
+    void createSubscribe(Subscription subscription);
 
-    void unsubscribe(Subscription subscription);
+    void deleteSubscribe(Subscription subscription);
 
     boolean existSubscription(Subscription subscription);
 
